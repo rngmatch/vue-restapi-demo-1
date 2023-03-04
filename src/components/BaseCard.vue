@@ -3,7 +3,7 @@ const props = defineProps({
   monster: {
     type: Object,
     default: () => ({
-      _id: -1,
+      id: -1,
       name: 'Unknown',
       imageUrl: 'https://via.placeholder.com/150',
     }),
@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <RouterLink
-    :to="`/monster/${props.monster._id}`"
+    :to="`/monster/${props.monster.id}`"
     class="rounded-lg bg-white shadow-lg"
   >
     <img

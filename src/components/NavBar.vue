@@ -5,7 +5,7 @@
     <div class="wrapper">
       <p>Monster Hunter API Monster List</p>
       <div>
-        <button href="#" class="menu" @click="fetchMonsters">
+        <button href="#" class="menu" @click="fetchMonster">
           Monster List
         </button>
       </div>
