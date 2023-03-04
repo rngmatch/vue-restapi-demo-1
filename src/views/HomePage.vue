@@ -10,10 +10,11 @@ onMounted(async () => {
 </script>
 
 <template>
+  <main class="min-h-screen bg-gradient-to-t from-green-700 to-blue-700"></main>
   <div>
     <div class="container mx-auto grid grid-cols-8 gap-4 py-8">
       <div v-for="monster in monsters" :key="monster.id">
-        <router-link :to="`/monster/${monster.id}`">
+        <router-link :to="`/${monster.id}`">
           <div class="rounded-lg bg-white shadow-lg">
             <img
               class="w-full rounded-t-lg object-cover"

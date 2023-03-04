@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import axios from 'axios'
 import useApi from '@/composables/useApi'
 
 const monsters = ref([])
@@ -8,8 +9,8 @@ const firstLoad = ref(true)
 const api = useApi()
 const page = ref(1)
 
-const useMonsters = () => {
-  const fetchMonsters = async () => {
+const fetchMonsters = async () => {
+  try {
     const { data } = await api.instance.get('/', {
       params: {
         page: page.value,
@@ -22,23 +23,27 @@ const useMonsters = () => {
       monsters.value.push(...data.data)
     }
     page.value++
+  } catch (error) {
+    console.error(error)
   }
+}
 
-  const fetchMonster = async (id) => {
-    const { data } = await api.instance.get(`/${id}`)
-    currentMonster.value = data
-  }
+const fetchMonster = async (id) => {
+  const { data } = await api.instance.get(`/${id}`)
+  currentMonster.value = data
+}
 
-  const clearMonsters = () => {
-    monsters.value = []
-    page.value = 1
-    firstLoad.value = true
-  }
+const clearMonsters = () => {
+  monsters.value = []
+  page.value = 1
+  firstLoad.value = true
+}
 
-  const loadNextPage = async () => {
-    await fetchMonsters()
-  }
+const loadNextPage = async () => {
+  await fetchMonsters()
+}
 
+export const useMonsters = () => {
   return {
     monsters,
     fetchMonsters,
@@ -49,5 +54,11 @@ const useMonsters = () => {
     loadNextPage,
   }
 }
-
-export default useMonsters
+export default {
+  monsters,
+  fetchMonsters,
+  currentMonster,
+  fetchMonster,
+  clearMonsters,
+  loadNextPage,
+}
