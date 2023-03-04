@@ -7,7 +7,7 @@ const { monsters, fetchMonsters, firstLoad } = useMonsters()
 
 onMounted(async () => {
   if (firstLoad.value) {
-    await fetchMonsters()
+    //await fetchMonsters()
     firstLoad.value = false
   }
 })
@@ -21,6 +21,7 @@ onMounted(async () => {
   >
     🚀
   </button>
+
   <main class="min-h-screen bg-gradient-to-t from-green-500 to-blue-700">
     <div class="container mx-auto grid grid-cols-8 gap-4 py-8">
       <BaseCard

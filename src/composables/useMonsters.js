@@ -6,11 +6,12 @@ const currentMonster = ref(null)
 const firstLoad = ref(true)
 
 const api = useApi()
-const page = ref(1)
+//const page = ref(1)
 
 const useMonsters = () => {
+  /*  
   const fetchMonsters = async () => {
-    const { data } = await api.instance.get('/monsters', {
+    const { data } = await api.instance.get('/', {
       params: {
         page: page.value,
       },
@@ -18,15 +19,15 @@ const useMonsters = () => {
     monsters.value.push(...data.data)
     page.value++
   }
-
+*/
   const fetchMonster = async (id) => {
-    const { data } = await api.instance.get(`/monsters/${id}`)
+    const { data } = await api.instance.get(`/${id}`)
     currentMonster.value = data
   }
 
   return {
     monsters,
-    fetchMonsters,
+    //fetchMonsters,
     fetchMonster,
     currentMonster,
     firstLoad,
