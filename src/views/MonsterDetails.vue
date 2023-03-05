@@ -2,17 +2,17 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import useCharacters from '@/composables/useCharacters'
+import { useMonsters } from '@/composables/useMonsters'
 
 const route = useRoute()
-const { fetchCharacter, currentCharacter } = useCharacters()
+const { fetchMonster, currentMonster } = useMonsters()
 
 onMounted(async () => {
-  await fetchCharacter(route.params.id)
+  await fetchMonster(route.params.id)
 })
 
 onUnmounted(() => {
-  currentCharacter.value = null
+  currentMonster.value = null
 })
 </script>
 
@@ -21,14 +21,14 @@ onUnmounted(() => {
     class="min-h-screen bg-gradient-to-r from-fuchsia-900 to-blue-700 py-8 text-white"
   >
     <div
-      v-if="currentCharacter"
+      v-if="currentMonster"
       class="flex flex-col items-center justify-center gap-6"
     >
-      <img :src="currentCharacter.imageUrl" :alt="currentCharacter.name" />
+      <img :src="currentMonster.imageUrl" :alt="currentMonster.name" />
       <h1 class="text-white-800 text-6xl font-bold">
-        Hi, I'm {{ currentCharacter.name }}
+        Hi, I'm {{ currentMonster.name }}
       </h1>
-      <pre>{{ currentCharacter }}</pre>
+      <pre>{{ currentMonster }}</pre>
     </div>
   </main>
 </template>
