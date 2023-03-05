@@ -1,9 +1,9 @@
 <script setup>
 const props = defineProps({
-  character: {
+  monster: {
     type: Object,
     default: () => ({
-      _id: -1,
+      id: -1,
       name: 'Unknown',
       imageUrl: 'https://via.placeholder.com/150',
     }),
@@ -13,16 +13,16 @@ const props = defineProps({
 
 <template>
   <RouterLink
-    :to="`/character/${props.character._id}`"
+    :to="`/monster/${props.monster.id}`"
     class="rounded-lg bg-white shadow-lg"
   >
     <img
       class="w-full rounded-t-lg object-cover"
-      :src="props.character.imageUrl"
+      :src="props.monster.imageUrl"
     />
     <div class="p-4">
       <h2 class="text-2xl font-semibold text-gray-800">
-        {{ props.character.name }}
+        {{ props.monster.name }}
       </h2>
     </div>
   </RouterLink>
